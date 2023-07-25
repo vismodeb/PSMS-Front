@@ -48,7 +48,7 @@
 		<div id="loading-icon-bx"></div>
 		<div class="account-form">
 			<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
-				<a href="index.html"><img src="assets/images/logo-white-2.png" alt=""></a>
+				<a href="index.php"><img src="assets/images/logo-white-2.png" alt=""></a>
 			</div>
 			<div class="account-form-inner">
 				<div class="account-container">
@@ -92,17 +92,31 @@
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
-									<label>Gender:</label><br>
-									<label><input name="st_gender" value="Male" type="radio" id="st_gender" checked> Male</label> &nbsp;
-									<label><input name="st_gender" value="Female" type="radio" id="st_gender"> Female</label>
+									<div class="input-group">
+										<label>Mother Name</label>
+										<input name="st_mother" type="text" class="form-control" id="st_mother">
+									</div>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
-										<label>Mother Name</label>
-										<input name="st_mother" type="text" class="form-control" id="st_mother">
+										<label>Address</label>
+										<input name="st_address" type="text" class="form-control" id="st_address">
 									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group">
+									<label>Birthday</label><br>
+									<input type="date" name="st_birthday" class="form-control">
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group">
+									<label>Gender:</label><br>
+									<label><input name="st_gender" value="Male" type="radio" id="st_gender" checked> Male</label> &nbsp;
+									<label><input name="st_gender" value="Female" type="radio" id="st_gender"> Female</label>
 								</div>
 							</div>
 							<div class="col-lg-12">
