@@ -1,12 +1,97 @@
 <?php
 
-	if(isset($_POST['$st_regSubmit'])){
-		$st_name = $_POST['st_name'];
+	require_once('confige.php');
 
-		if(empty($st_name)){
-			$error = 'Name is Required!';
+    if(isset($_POST['st_regSubmit'])){
+        $st_name = $_POST['st_name'];
+        $st_email = $_POST['st_email'];
+        $st_mobile = $_POST['st_mobile'];
+        $st_father = $_POST['st_father'];
+        $st_mother = $_POST['st_mother'];
+        $st_address = $_POST['st_address'];
+        $st_birthday = $_POST['st_birthday'];
+        $st_gender = $_POST['st_gender'];
+        $st_password = $_POST['st_password'];
+
+		// count mobile and email
+		$countMobile = stRowCount('mobile',$st_mobile);
+		$countEmail = stRowCount('email',$st_email);
+
+        if(empty($st_name)){
+            $error = 'Name is Required!';
+        }
+		else if(empty($st_email)){
+			$error = 'Email is Required!';
 		}
-	}
+		else if (!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
+			$error = 'Invalid email format!';
+		}
+		else if ($conutEmail !=0){
+			$error = 'Email Already Used, Try Another!';
+		}
+		else if(empty($st_mobile)){
+			$error = 'Mobile Number is Required!';
+		}
+		else if(!is_numeric($st_mobile)){
+			$error = 'Mobile Number is Must de Number!';
+		}
+		else if(strlen($st_mobile) != 11){
+			$error = 'Mobile Number is Must de 11 Digit!';
+		}
+		else if($countMobile != 0){
+			$error = 'Mobile Number Already Used, Try Another!';
+		}
+		else if(empty($st_father)){
+			$error = 'Father name is Required!';
+		}
+		else if(empty($st_mother)){
+			$error = 'Mother name is Required!';
+		}
+		else if(empty($st_address)){
+			$error = 'Address is Required!';
+		}
+		else if(empty($st_birthday)){
+			$error = 'Birthday is Required!';
+		}
+		else if(empty($st_password)){
+			$error = 'Password is Required!';
+		}
+		else{
+			$registration_date = date('Y-m-d h:i:s');
+			$st_password = SHA1($st_password);
+
+			$insert = $pdo->prepare("INSERT INTO students(
+				name,
+				email,
+				mobile,
+				father_name,
+				mother_name,
+				address,
+				birthday,
+				gender,
+				password,
+				registration_date
+			) VALUES(?,?,?,?,?,?,?,?,?,?)");
+			$insertStatus = $insert->execute(array(
+				$st_name,
+				$st_email,
+				$st_mobile,
+				$st_father,
+				$st_mother,
+				$st_address,
+				$st_birthday,
+				$st_gender,
+				$st_password,
+				$registration_date
+			));
+			if($insertStatus == true){
+				$success = 'Your Registration Successfully`!';
+			}
+			else{
+				$error = 'Registration Failed! try again!';
+			}
+		}
+    }
 
 ?>
 
@@ -67,21 +152,22 @@
 					<div class="heading-bx left">
 						<h2 class="title-head">Student <span>Registration</span></h2>
 						<p>Login Your Account <a href="login.php">Click here</a></p>
-					</div>	
-
-					<?php if(isset($error)) : ?>
-						<div class="alert alert-danger">
-							<?php echo $error; ?>
-						</div>
-					<?php endif; ?>
-
-					<?php if(isset($success)) : ?>
-						<div class="alert alert-success">
-							<?php echo $success; ?>
-						</div>
-					<?php endif; ?>
-
+					</div>
+					
 					<form class="contact-bx" action="" method="POST">
+
+						<?php if(isset($error)) : ?>
+							<div class="alert alert-danger">
+								<?php echo $error; ?>
+							</div>
+						<?php endif; ?>
+
+						<?php if(isset($success)) : ?>
+							<div class="alert alert-success">
+								<?php echo $success; ?>
+							</div>
+						<?php endif; ?>
+
 						<div class="row placeani">
 							<div class="col-lg-12">
 								<div class="form-group">
@@ -95,7 +181,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label>Email Address</label>
-										<input name="st_email" type="email" class="form-control" id="st_email">
+										<input name="st_email" type="email" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -103,7 +189,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label>Mobile Number</label>
-										<input name="st_mobile" type="text" class="form-control" id="st_mobile">
+										<input name="st_mobile" type="text" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -111,7 +197,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label>Father Name</label>
-										<input name="st_father" type="text" class="form-control" id="st_father">
+										<input name="st_father" type="text" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -119,7 +205,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label>Mother Name</label>
-										<input name="st_mother" type="text" class="form-control" id="st_mother">
+										<input name="st_mother" type="text" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -127,7 +213,7 @@
 								<div class="form-group">
 									<div class="input-group">
 										<label>Address</label>
-										<input name="st_address" type="text" class="form-control" id="st_address">
+										<input name="st_address" type="text" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -140,15 +226,15 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label>Gender:</label><br>
-									<label><input name="st_gender" value="Male" type="radio" id="st_gender" checked> Male</label> &nbsp;
-									<label><input name="st_gender" value="Female" type="radio" id="st_gender"> Female</label>
+									<label><input name="st_gender" value="Male" type="radio" checked> Male</label> &nbsp;
+									<label><input name="st_gender" value="Female" type="radio"> Female</label>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group"> 
 										<label>Password</label>
-										<input name="st_password" type="password" class="form-control" id="st_password">
+										<input name="st_password" type="password" class="form-control">
 									</div>
 								</div>
 							</div>
