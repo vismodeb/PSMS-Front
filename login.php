@@ -1,7 +1,50 @@
+<?php
+
+	require_once('confige.php');
+	session_start();
+
+	if(isset($_POST['st_loginSubmit'])){
+		$st_emailMobil = $_POST['st_emailMobil'];
+		$st_password = $_POST['st_password'];
+
+		if(empty($st_emailMobil)){
+			$error = 'Email or Mobile Number is Required!';
+		}
+		else if(empty($st_password)){
+			$error = 'Password is Required!';
+		}
+		else if(strlen($st_password) < 4 ){
+			$error = 'Password is Must de 4 Digit!';
+		}
+
+		else{
+			// $st_password = SHA1($st_password);
+			// fine login user
+			$stCount = $pdo->prepare("SELECT id,email,mobile FROM students WHERE (email=? or mobile=?) AND password=? ");
+			$stCount->execute(array($st_emailMobil,$st_emailMobil,$st_password));
+			$loginCount = $stCount->rowCount();
+
+			if($loginCount == 1){
+				$stData = $stCount->fetchAll(PDO::FETCH_ASSOC);
+				$_SESSION['st_loggedin'] = $stData;
+				header('location:dashboard/index.php');
+			}
+			else{
+				$error = 'User Email OR Password is Wrong!';
+			}
+
+		}
+	}
+
+	// if(isset($_SESSION['st_loggedin'])){
+	// 	header('location:dashboard/index.php');
+	// }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
 
 	<!-- META ============================================= -->
@@ -12,11 +55,11 @@
 	<meta name="robots" content="" />
 	
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="PSMS : Student Login" />
 	
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="PSMS : Student Login" />
+	<meta property="og:description" content="PSMS : Student Login" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
 	
@@ -25,15 +68,10 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>PSMS : Student Login </title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.min.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
 	
 	<!-- All PLUGINS CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="assets/css/assets.css">
@@ -62,13 +100,26 @@
 					<h2 class="title-head">Login to your <span>Account</span></h2>
 					<p>Don't have an account? <a href="registration.php">Create one here</a></p>
 				</div>	
-				<form class="contact-bx">
+				<form class="contact-bx" action="" method="POST">
+
+					<?php if(isset($error)): ?>
+						<div class="alert alert-danger">
+							<?php echo $error; ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if(isset($success)): ?>
+						<div class="alert alert-success">
+							<?php echo $success; ?>
+						</div>
+					<?php endif; ?>
+
 					<div class="row placeani">
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
-									<label>Your Name</label>
-									<input name="dzName" type="text" required="" class="form-control">
+									<label>Your Email or Mobile</label>
+									<input name="st_emailMobil" type="text" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -76,7 +127,7 @@
 							<div class="form-group">
 								<div class="input-group"> 
 									<label>Your Password</label>
-									<input name="dzEmail" type="password" class="form-control" required="">
+									<input name="st_password" type="password" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -90,14 +141,7 @@
 							</div>
 						</div>
 						<div class="col-lg-12 m-b30">
-							<button name="submit" type="submit" value="Submit" class="btn button-md">Login</button>
-						</div>
-						<div class="col-lg-12">
-							<h6>Login with Social media</h6>
-							<div class="d-flex">
-								<a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-								<a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
-							</div>
+							<button name="st_loginSubmit" type="submit" value="Submit" class="btn button-md">Login</button>
 						</div>
 					</div>
 				</form>
