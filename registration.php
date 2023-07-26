@@ -14,8 +14,8 @@
         $st_password = $_POST['st_password'];
 
 		// count mobile and email
-		$countMobile = stRowCount('mobile',$st_mobile);
 		$countEmail = stRowCount('email',$st_email);
+		$countMobile = stRowCount('mobile',$st_mobile);
 
         if(empty($st_name)){
             $error = 'Name is Required!';
@@ -23,10 +23,10 @@
 		else if(empty($st_email)){
 			$error = 'Email is Required!';
 		}
-		else if (!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
+		else if(!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
 			$error = 'Invalid email format!';
 		}
-		else if ($conutEmail !=0){
+		else if($countEmail != 0){
 			$error = 'Email Already Used, Try Another!';
 		}
 		else if(empty($st_mobile)){
@@ -56,6 +56,10 @@
 		else if(empty($st_password)){
 			$error = 'Password is Required!';
 		}
+		else if(strlen($st_password) < 4){
+			$error = 'Password is Must Be 4 Digit!';
+		}
+
 		else{
 			$registration_date = date('Y-m-d h:i:s');
 			$st_password = SHA1($st_password);
@@ -125,7 +129,6 @@
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	
 	<!-- All PLUGINS CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="assets/css/assets.css">
 	
@@ -264,5 +267,4 @@
 	<script src="assets/js/contact.js"></script>
 	<!-- <script src='assets/vendors/switcher/switcher.js'></script> -->
 </body>
-
 </html>

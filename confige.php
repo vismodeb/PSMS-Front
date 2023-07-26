@@ -15,13 +15,13 @@
         echo "Connection failed: " . $e->getMessage();
     }
 
-    // count any colume value from students table 
+    // count any colume value from students table
     function stRowCount($col,$val){
         global $pdo;
-        $stm=$pdo->prepare('SELECT $col PROM students WHERE $col=?');
+        $stm = $pdo->prepare("SELECT $col FROM students WHERE $col=?");
         $stm->execute(array($val));
         $count = $stm->rowCount();
         return $count;
-    }
+      }
 
 ?>
