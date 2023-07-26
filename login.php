@@ -36,9 +36,9 @@
 		}
 	}
 
-	// if(isset($_SESSION['st_loggedin'])){
-	// 	header('location:dashboard/index.php');
-	// }
+	if(isset($_SESSION['st_loggedin'])){
+		header('location:dashboard/index.php');
+	}
 
 
 ?>

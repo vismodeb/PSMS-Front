@@ -1,3 +1,10 @@
+<?php
+
+	session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,8 +76,14 @@
 									<option data-icon="flag flag-us">English US</option>
 								</select>
 							</li>
-							<li><a href="login.php">Login</a></li>
-							<li><a href="registration.php">Register</a></li>
+
+							<?php if(isset($_SESSION['st_loggedin'])): ?>
+								<li><a href="dashboard/index.php">Dashboard</a></li>
+							<?php else: ?>
+								<li><a href="login.php">Login</a></li>
+								<li><a href="registration.php">Register</a></li>
+							<?php endif; ?>
+							
 						</ul>
 					</div>
 				</div>
