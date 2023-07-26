@@ -1,3 +1,15 @@
+<?php
+
+	if(isset($_POST['$st_regSubmit'])){
+		$st_name = $_POST['st_name'];
+
+		if(empty($st_name)){
+			$error = 'Name is Required!';
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,13 +68,26 @@
 						<h2 class="title-head">Student <span>Registration</span></h2>
 						<p>Login Your Account <a href="login.php">Click here</a></p>
 					</div>	
+
+					<?php if(isset($error)) : ?>
+						<div class="alert alert-danger">
+							<?php echo $error; ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if(isset($success)) : ?>
+						<div class="alert alert-success">
+							<?php echo $success; ?>
+						</div>
+					<?php endif; ?>
+
 					<form class="contact-bx" action="" method="POST">
 						<div class="row placeani">
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
 										<label>Student Name</label>
-										<input name="st_name" type="text" class="form-control" id="st_name">
+										<input name="st_name" type="text" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -128,7 +153,7 @@
 								</div>
 							</div>
 							<div class="col-lg-12 m-b30">
-								<button name="submit" type="submit" value="Submit" class="btn button-md">Registration</button>
+								<button name="st_regSubmit" type="submit" value="Submit" class="btn button-md">Registration</button>
 							</div>
 						</div>
 					</form>
