@@ -2,9 +2,26 @@
 
     require_once('header.php');
 
+	$user_id = $_SESSION['st_loggedin'][0]['id'];
+
+	$stm = $pdo->prepare("SELECT * FROM students WHERE id=?");
+	$stm->execute(array($user_id));
+	$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+	$name = $result[0]['name'];
+	$email = $result[0]['email'];
+	$mobile  = $result[0]['mobile'];
+	$father_name = $result[0]['father_name'];
+	$mother_name = $result[0]['mother_name'];
+	$address = $result[0]['address'];
+	$birthday = $result[0]['birthday'];
+	$gender = $result[0]['gender'];
+	$password = $result[0]['password'];
+	$roll = $result[0]['roll'];
+	$currend_class = $result[0]['currend_class'];
+	$registration_date = $result[0]['registration_date'];
+
 ?>
-
-
 
 	<!--Main container start -->
 	<main class="ttr-wrapper">
@@ -24,153 +41,134 @@
 							<h4>User Profile</h4>
 						</div>
 						<div class="widget-inner">
-							<form class="edit-profile m-b30">
-								<div class="">
-									<div class="form-group row">
-										<div class="col-sm-10  ml-auto">
-											<h3>1. Personal Details</h3>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Full Name</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="Mark Andre">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Occupation</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="CTO">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Company Name</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="EduChamp">
-											<span class="help">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Phone No.</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="+120 012345 6789">
-										</div>
-									</div>
-									
-									<div class="seperator"></div>
-									
-									<div class="form-group row">
-										<div class="col-sm-10 ml-auto">
-											<h3>2. Address</h3>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Address</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="5-S2-20 Dummy City, UK">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">City</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="US">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">State</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="California">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Postcode</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="000702">
-										</div>
-									</div>
-
-									<div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-
-									<div class="form-group row">
-										<div class="col-sm-10 ml-auto">
-											<h3 class="m-form__section">3. Social Links</h3>
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Linkedin</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="www.linkedin.com">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Facebook</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="www.facebook.com">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Twitter</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="www.twitter.com">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Instagram</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="text" value="www.instagram.com">
-										</div>
-									</div>
-								</div>
-								<div class="">
-									<div class="">
-										<div class="row">
-											<div class="col-sm-2">
-											</div>
-											<div class="col-sm-7">
-												<button type="reset" class="btn">Save changes</button>
-												<button type="reset" class="btn-secondry">Cancel</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-							<form class="edit-profile">
-								<div class="">
-									<div class="form-group row">
-										<div class="col-sm-10 ml-auto">
-											<h3>4. Password</h3>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Current Password</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="password" value="">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">New Password</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="password" value="">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-sm-2 col-form-label">Re Type Password</label>
-										<div class="col-sm-7">
-											<input class="form-control" type="password" value="">
-										</div>
-									</div>
-								</div>
+							<div class="">
 								<div class="row">
 									<div class="col-sm-2">
+										<b>Name :</b>
 									</div>
 									<div class="col-sm-7">
-										<button type="reset" class="btn">Save changes</button>
-										<button type="reset" class="btn-secondry">Cancel</button>
+										<?php echo $name; ?>
 									</div>
 								</div>
-									
-							</form>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Email :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $email; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Mobile Number :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $mobile; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Father Name :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $father_name; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Mother Name :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $mother_name; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Address :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $address; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Birthday :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $birthday; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Gender :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $gender; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Password :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $password; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Roll :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $roll; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Currend Class :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $currend_class; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-2">
+										<b>Registration Date :</b>
+									</div>
+									<div class="col-sm-7">
+										<?php echo $registration_date; ?>
+									</div>
+								</div>
+							</div>
+							<div class="">
+								<div class="row mt-3">
+									<div class="col-sm-7">
+										<a href="edit_profile.php" class="btn">Edit Profile</a>
+										<a href="index.php" class="btn-secondry">Cancel</a>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

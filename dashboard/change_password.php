@@ -112,7 +112,7 @@
 									</div>
 									<div class="col-sm-7">
 										<button name="chang_pass" type="submit" class="btn">Save changes</button>
-										<button type="reset" class="btn-secondry">Cancel</button>
+										<a href="index.php" class="btn-secondry">Cancel</a>
 									</div>
 								</div>
 									
