@@ -25,7 +25,7 @@
 		}
 		else if(!filter_var($st_email, FILTER_VALIDATE_EMAIL)){
 			$error = 'Invalid email format!';
-		}
+		} 
 		else if($countEmail != 0){
 			$error = 'Email Already Used, Try Another!';
 		}
@@ -73,7 +73,7 @@
 				address,
 				birthday,
 				gender,
-				password,
+				dt_password,
 				registration_date
 			) VALUES(?,?,?,?,?,?,?,?,?,?)");
 			$insertStatus = $insert->execute(array(
@@ -89,7 +89,7 @@
 				$registration_date
 			));
 			if($insertStatus == true){
-				$success = 'Your Registration Successfully`!';
+				$success = 'Your Registration Successfully!';
 			}
 			else{
 				$error = 'Registration Failed! try again!';

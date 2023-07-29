@@ -16,7 +16,6 @@
 	$address = $result[0]['address'];
 	$birthday = $result[0]['birthday'];
 	$gender = $result[0]['gender'];
-	$password = $result[0]['password'];
 	$roll = $result[0]['roll'];
 	$currend_class = $result[0]['currend_class'];
 	$registration_date = $result[0]['registration_date'];
@@ -118,16 +117,6 @@
 									</div>
 									<div class="col-sm-7">
 										<?php echo $gender; ?>
-									</div>
-								</div>
-							</div>
-							<div class="">
-								<div class="row mt-3">
-									<div class="col-sm-2">
-										<b>Password :</b>
-									</div>
-									<div class="col-sm-7">
-										<?php echo $password; ?>
 									</div>
 								</div>
 							</div>

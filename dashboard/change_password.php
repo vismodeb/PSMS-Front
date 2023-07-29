@@ -8,7 +8,7 @@
         $confirm_pass = $_POST['confirm_pass'];
 
         $user_id = $_SESSION['st_loggedin'][0]['id'];
-        $db_password = Student('password',$user_id);
+        $db_password = Student('dt_password',$user_id);
 
         if(empty($current_pass)){
             $error = 'Current Password is Required!';
@@ -19,15 +19,15 @@
         else if(empty($confirm_pass)){
             $error = 'Confirem Password is Required!';
         }
-        else if($db_password != $current_pass){
+        else if($db_password != SHA1($current_pass)){
             $error = 'Current Password is wrong!';
         }
         else if($new_pass != $confirm_pass){
             $error = "New Password & Confirm Password does'nt match!";
         }
         else{
-            $update = $pdo->prepare("UPDATE students SET password = ? WHERE id=?");
-            $update->execute(array($confirm_pass,$user_id));
+            $update = $pdo->prepare("UPDATE students SET dt_password = ? WHERE id=?");
+            $update->execute(array(SHA1($confirm_pass),$user_id));
 
             $success = 'Password change successfully!';
         }

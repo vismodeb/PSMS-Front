@@ -18,9 +18,11 @@
 		}
 
 		else{
-			// $st_password = SHA1($st_password);
+
+			$st_password = SHA1($st_password);
+			
 			// fine login user
-			$stCount = $pdo->prepare("SELECT id,email,mobile FROM students WHERE (email=? or mobile=?) AND password=? ");
+			$stCount = $pdo->prepare("SELECT id,email,mobile FROM students WHERE (email=? or mobile=?) AND dt_password=? ");
 			$stCount->execute(array($st_emailMobil,$st_emailMobil,$st_password));
 			$loginCount = $stCount->rowCount();
 
