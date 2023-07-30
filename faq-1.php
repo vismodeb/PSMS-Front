@@ -1,6 +1,7 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 	<!-- META ============================================= -->
@@ -11,11 +12,11 @@
 	<meta name="robots" content="" />
 	
 	<!-- DESCRIPTION -->
-	<meta name="description" content="EduChamp : Education HTML Template" />
+	<meta name="description" content="PSMS : Primary School Management System" />
 	
 	<!-- OG -->
-	<meta property="og:title" content="EduChamp : Education HTML Template" />
-	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:title" content="PSMS : Primary School Management System" />
+	<meta property="og:description" content="PSMS : Primary School Management System" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
 	
@@ -24,15 +25,10 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
-	<title>EduChamp : Education HTML Template </title>
+	<title>PSMS : Primary School Management System</title>
 	
 	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.min.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
 	
 	<!-- All PLUGINS CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="assets/css/assets.css">
@@ -47,10 +43,15 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
 	
+	<!-- REVOLUTION SLIDER CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/navigation.css">
+	<!-- REVOLUTION SLIDER END -->	
 </head>
 <body id="bg">
 <div class="page-wraper">
-	<div id="loading-icon-bx"></div>
+<div id="loading-icon-bx"></div>
 	<!-- Header Top ==== -->
     <header class="header rs-nav">
 		<div class="top-bar">
@@ -58,7 +59,7 @@
 				<div class="row d-flex justify-content-between">
 					<div class="topbar-left">
 						<ul>
-							<li><a href="faq-1.html"><i class="fa fa-question-circle"></i>Ask a Question</a></li>
+							<li><a href="faq-1.php"><i class="fa fa-question-circle"></i>Ask a Question</a></li>
 							<li><a href="javascript:;"><i class="fa fa-envelope-o"></i>Support@website.com</a></li>
 						</ul>
 					</div>
@@ -70,8 +71,14 @@
 									<option data-icon="flag flag-us">English US</option>
 								</select>
 							</li>
-							<li><a href="login.html">Login</a></li>
-							<li><a href="register.html">Register</a></li>
+
+							<?php if(isset($_SESSION['st_loggedin'])): ?>
+								<li><a href="dashboard/index.php">Dashboard</a></li>
+							<?php else: ?>
+								<li><a href="login.php">Login</a></li>
+								<li><a href="registration.php">Register</a></li>
+							<?php endif; ?>
+							
 						</ul>
 					</div>
 				</div>
@@ -82,7 +89,7 @@
                 <div class="container clearfix">
 					<!-- Header Logo ==== -->
 					<div class="menu-logo">
-						<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+						<a href="index.php"><img src="assets/images/logo.png" alt=""></a>
 					</div>
 					<!-- Mobile Nav Button ==== -->
                     <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,15 +120,10 @@
 					<!-- Navigation Menu ==== -->
                     <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
 						<div class="menu-logo">
-							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+							<a href="index.php"><img src="assets/images/logo.png" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
-							<li class="active"><a href="javascript:;">Home <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-									<li><a href="index.html">Home 1</a></li>
-									<li><a href="index-2.html">Home 2</a></li>
-								</ul>
-							</li>
+							<li class="active"><a href="index.php">Home</a></li>
 							<li><a href="javascript:;">Pages <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 									<li><a href="javascript:;">About<i class="fa fa-angle-right"></i></a>
@@ -180,30 +182,7 @@
 									<li><a href="blog-details.html">Blog Details</a></li>
 								</ul>
 							</li>
-							<li class="nav-dashboard"><a href="javascript:;">Dashboard <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-									<li><a href="admin/index.html">Dashboard</a></li>
-									<li><a href="admin/add-listing.html">Add Listing</a></li>
-									<li><a href="admin/bookmark.html">Bookmark</a></li>
-									<li><a href="admin/courses.html">Courses</a></li>
-									<li><a href="admin/review.html">Review</a></li>
-									<li><a href="admin/teacher-profile.html">Teacher Profile</a></li>
-									<li><a href="admin/user-profile.html">User Profile</a></li>
-									<li><a href="javascript:;">Calendar<i class="fa fa-angle-right"></i></a>
-										<ul class="sub-menu">
-											<li><a href="admin/basic-calendar.html">Basic Calendar</a></li>
-											<li><a href="admin/list-view-calendar.html">List View Calendar</a></li>
-										</ul>
-									</li>
-									<li><a href="javascript:;">Mailbox<i class="fa fa-angle-right"></i></a>
-										<ul class="sub-menu">
-											<li><a href="admin/mailbox.html">Mailbox</a></li>
-											<li><a href="admin/mailbox-compose.html">Compose</a></li>
-											<li><a href="admin/mailbox-read.html">Mail Read</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
+							<li class="nav-dashboard"><a href="dashboard/index.php">Dashboard</a></li>
 						</ul>
 						<div class="nav-social-link">
 							<a href="javascript:;"><i class="fa fa-facebook"></i></a>
@@ -216,205 +195,212 @@
             </div>
         </div>
     </header>
-    <!-- header END ==== -->
-    <!-- Inner Content Box ==== -->
-    <div class="page-content">
-        <!-- Page Heading Box ==== -->
-        <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner2.jpg);">
+    <!-- Header Top END ==== -->
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- inner page banner -->
+        <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner1.jpg);">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">About Us 1</h1>
+                    <h1 class="text-white">Frequently Asked Questions</h1>
 				 </div>
             </div>
         </div>
+		<!-- Breadcrumb row -->
 		<div class="breadcrumb-row">
 			<div class="container">
 				<ul class="list-inline">
 					<li><a href="#">Home</a></li>
-					<li>About Us 1</li>
+					<li>Faqs 1</li>
 				</ul>
 			</div>
 		</div>
-		<!-- Page Heading Box END ==== -->
-		<!-- Page Content Box ==== -->
-		<div class="content-block">
-            <!-- About Us ==== -->
-			<div class="section-area section-sp1">
+		<!-- Breadcrumb row END -->
+        <!-- contact area -->
+        <div class="content-block">
+            <!-- Your Faq -->
+            <div class="section-area section-sp1">
                 <div class="container">
-					 <div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-							<div class="feature-container">
-								<div class="feature-md text-white m-b20">
-									<a href="#" class="icon-cell"><img src="assets/images/icon/icon1.png" alt=""/></a> 
+					<div class="row">
+						<div class="col-lg-8 col-md-12">
+							<div class="heading-bx left">
+								<h2 class="m-b10 title-head">Asked <span> Questions</span></h2>
+							</div>
+							<p class="m-b10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
+							<div class="ttr-accordion m-b30 faq-bx" id="accordion1">
+								<div class="panel">
+									<div class="acod-head">
+										<h6 class="acod-title"> 
+											<a data-toggle="collapse" href="#faq1" class="collapsed" data-parent="#faq1">
+											Why won't my payment go through? </a> </h6>
+									</div>
+									<div id="faq1" class="acod-body collapse">
+										<div class="acod-content">Web design aorem apsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+									</div>
 								</div>
-								<div class="icon-content">
-									<h5 class="ttr-tilte">Our Philosophy</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
+								<div class="panel">
+									<div class="acod-head">
+										<h6 class="acod-title"> 
+											<a data-toggle="collapse" href="#faq2" class="collapsed" data-parent="#faq2">
+											How do I get a refund?</a> </h6>
+									</div>
+									<div id="faq2" class="acod-body collapse">
+										<div class="acod-content">Graphic design aorem apsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+									</div>
+								</div>
+								<div class="panel">
+									<div class="acod-head">
+										<h6 class="acod-title"> 
+											<a data-toggle="collapse"  href="#faq3" class="collapsed"  data-parent="#faq3">
+											How do I redeem a coupon? </a> </h6>
+									</div>
+									<div id="faq3" class="acod-body collapse">
+										<div class="acod-content">Developement aorem apsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+									</div>
+								</div>
+								<div class="panel">
+									<div class="acod-head">
+										<h6 class="acod-title"> 
+											<a data-toggle="collapse"  href="#faq4" class="collapsed"  data-parent="#faq4">
+											Why aren't my courses showing in my account? </a> </h6>
+									</div>
+									<div id="faq4" class="acod-body collapse">
+										<div class="acod-content">Developement aorem apsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+									</div>
+								</div>
+								<div class="panel">
+									<div class="acod-head">
+										<h6 class="acod-title"> 
+											<a data-toggle="collapse"  href="#faq5" class="collapsed"  data-parent="#faq5">
+											Changing account name </a> </h6>
+									</div>
+									<div id="faq5" class="acod-body collapse">
+										<div class="acod-content">Developement aorem apsum dolor sit amet, adipiscing elit, sed diam nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+									</div>
+								</div>
+							</div>
+							<p class="m-b10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.</p>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 m-b30">
+									<div class="feature-container">
+										<div class="feature-md text-white m-b20">
+											<a href="#" class="icon-cell"><img src="assets/images/icon/icon1.png" alt=""></a> 
+										</div>
+										<div class="icon-content">
+											<h5 class="ttr-tilte">Our Philosophy</h5>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 m-b30">
+									<div class="feature-container">
+										<div class="feature-md text-white m-b20">
+											<a href="#" class="icon-cell"><img src="assets/images/icon/icon2.png" alt=""></a> 
+										</div>
+										<div class="icon-content">
+											<h5 class="ttr-tilte">Kingster's Principle</h5>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 m-b30">
+									<div class="feature-container">
+										<div class="feature-md text-white m-b20">
+											<a href="#" class="icon-cell"><img src="assets/images/icon/icon3.png" alt=""></a> 
+										</div>
+										<div class="icon-content">
+											<h5 class="ttr-tilte">Key Of Success</h5>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 m-b30">
+									<div class="feature-container">
+										<div class="feature-md text-white m-b20">
+											<a href="#" class="icon-cell"><img src="assets/images/icon/icon4.png" alt=""></a> 
+										</div>
+										<div class="icon-content">
+											<h5 class="ttr-tilte">Our Philosophy</h5>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-							<div class="feature-container">
-								<div class="feature-md text-white m-b20">
-									<a href="#" class="icon-cell"><img src="assets/images/icon/icon2.png" alt=""/></a> 
+						<div class="col-lg-4 col-md-12">
+							<form class="contact-bx dzForm" action="http://educhamp.themetrades.com/demo/script/contact.php">
+							<div class="dzFormMsg"></div>
+								<div class="heading-bx left">
+									<h2 class="title-head">Get In <span>Touch</span></h2>
+									<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
 								</div>
-								<div class="icon-content">
-									<h5 class="ttr-tilte">Kingster's Principle</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
+								<div class="row placeani">
+									<div class="col-lg-6 ">
+										<div class="form-group">
+											<div class="input-group">
+												<label>Your Name</label>
+												<input name="dzName" type="text" required class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<div class="input-group"> 
+												<label>Your Email Address</label>
+												<input name="dzEmail" type="email" class="form-control" required >
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<div class="input-group">
+												<label>Your Phone</label>
+												<input name="dzOther[Phone]" type="text" required class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<div class="input-group">
+												<label>Subject</label>
+												<input name="dzOther[Subject]" type="text" required class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+											<div class="input-group">
+												<label>Type Message</label>
+												<textarea name="dzMessage" rows="4" class="form-control" required ></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+											<div class="input-group">
+												<div class="g-recaptcha" data-sitekey="6LefsVUUAAAAADBPsLZzsNnETChealv6PYGzv3ZN" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+												<input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<button name="submit" type="submit" value="Submit" class="btn button-md"> Send Message</button>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-							<div class="feature-container">
-								<div class="feature-md text-white m-b20">
-									<a href="#" class="icon-cell"><img src="assets/images/icon/icon3.png" alt=""/></a> 
-								</div>
-								<div class="icon-content">
-									<h5 class="ttr-tilte">Key Of Success</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6 m-b30">
-							<div class="feature-container">
-								<div class="feature-md text-white m-b20">
-									<a href="#" class="icon-cell"><img src="assets/images/icon/icon4.png" alt=""/></a> 
-								</div>
-								<div class="icon-content">
-									<h5 class="ttr-tilte">Our Philosophy</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod..</p>
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
-				</div>
-            </div>
-			<!-- About Us END ==== -->
-            <!-- Our Story ==== -->
-			<div class="section-area bg-gray section-sp1 our-story">
-				<div class="container">
-					<div class="row align-items-center d-flex">
-						<div class="col-lg-5 col-md-12 heading-bx">
-							<h2 class="m-b10">Our Story</h2>
-							<h5 class="fw4">It is a long established fact that a reade.</h5>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-							<a href="#" class="btn">Read More</a>
-						</div>
-						<div class="col-lg-7 col-md-12 heading-bx p-lr">
-							<div class="video-bx">
-								<img src="assets/images/about/pic1.jpg" alt=""/>
-								<a href="https://www.youtube.com/watch?v=x_sJzVe9P_8" class="popup-youtube video"><i class="fa fa-play"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Our Story END ==== -->
-			<!-- Our Status ==== -->
-			<div class="section-area content-inner section-sp1">
-                <div class="container">
-                    <div class="section-content">
-                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
-                                <div class="counter-style-1">
-                                    <div class="text-primary">
-										<span class="counter">3000</span><span>+</span>
-									</div>
-									<span class="counter-text">Completed Projects</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
-                                <div class="counter-style-1">
-									<div class="text-black">
-										<span class="counter">2500</span><span>+</span>
-									</div>
-									<span class="counter-text">Happy Clients</span>
-								</div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
-                                <div class="counter-style-1">
-									<div class="text-primary">
-										<span class="counter">1500</span><span>+</span>
-									</div>
-									<span class="counter-text">Questions Answered</span>
-								</div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-6 m-b30">
-                                <div class="counter-style-1">
-									<div class="text-black">
-										<span class="counter">1000</span><span>+</span>
-									</div>
-									<span class="counter-text">Ordered Coffee's</span>
-								</div>
-                            </div>
-                        </div>
-                    </div>
+					
                 </div>
             </div>
-			<!-- Our Status END ==== -->
-			<!-- About Content ==== -->
-			<div class="section-area section-sp2 bg-fix ovbl-dark join-bx text-center" style="background-image:url(assets/images/background/bg1.jpg);">
-                <div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="join-content-bx text-white">
-								<h2>Learn a new skill online on <br/> your time</h2>
-								<h4><span class="counter">57,000 </span> Online Courses</h4>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-								<a href="#" class="btn button-md">Join Now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- About Content END ==== -->
-			<!-- Testimonials ==== -->
-			<div class="section-area section-sp2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 heading-bx left">
-							<h2 class="title-head text-uppercase">what people <span>say</span></h2>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
-						</div>
-					</div>
-					<div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
-						<div class="item">
-							<div class="testimonial-bx">
-								<div class="testimonial-thumb">
-									<img src="assets/images/testimonials/pic1.jpg" alt="">
-								</div>
-								<div class="testimonial-info">
-									<h5 class="name">Peter Packer</h5>
-									<p>-Art Director</p>
-								</div>
-								<div class="testimonial-content">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-bx">
-								<div class="testimonial-thumb">
-									<img src="assets/images/testimonials/pic2.jpg" alt="">
-								</div>
-								<div class="testimonial-info">
-									<h5 class="name">Peter Packer</h5>
-									<p>-Art Director</p>
-								</div>
-								<div class="testimonial-content">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Testimonials END ==== -->
-		</div>
-		<!-- Page Content Box END ==== -->
+            <!-- Your Faq End -->
+        </div>
+		<!-- contact area END -->
     </div>
-    <!-- Inner Content Box END ==== -->
-    <!-- Footer ==== -->
+    <!-- Content END-->
+	<!-- Footer ==== -->
     <footer>
         <div class="footer-top">
 			<div class="pt-exebar">
@@ -520,7 +506,7 @@
         </div>
     </footer>
     <!-- Footer END ==== -->
-    <button class="back-to-top fa fa-chevron-up"></button>
+    <button class="back-to-top fa fa-chevron-up" ></button>
 </div>
 <!-- External JavaScripts -->
 <script src="assets/js/jquery.min.js"></script>
@@ -539,6 +525,5 @@
 <script src="assets/js/contact.js"></script>
 <script src='assets/vendors/switcher/switcher.js'></script>
 </body>
-
 
 </html>

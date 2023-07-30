@@ -28,7 +28,7 @@
         $up_birthday = $_POST['up_birthday'];
         $up_gender = $_POST['up_gender'];
         // $photo = $_FILES['photo'];
-        // $photo = $_FILES['photo']['name'];
+        // $photo_name = $_FILES['photo']['name'];
 
 		if(empty($up_name)){
             $error = 'Name is Required!';
@@ -65,6 +65,7 @@
 		}
 
 		// else{
+
 		// 	if(!empty($photo)){
 		// 		$target_dir = "assets/images/students/";
 		// 		$target_file = $target_dir . basename($_FILES["photo"]["name"]);
@@ -121,7 +122,7 @@
 							<h4>Update Profile</h4>
 						</div>
 						<div class="widget-inner">
-							<form class="edit-profile" action="" method="POST">
+							<form class="edit-profile" action="" method="POST" enctype="multipart/form-date">
 								<div class="">
 									<!-- <div class="form-group row">
 										<div class="col-sm-10 ml-auto">
@@ -203,12 +204,12 @@
 											name="up_gender" value="Female" type="radio"> Female</label>
 										</div>
 									</div>
-									<div class="form-group row">
+									<!-- <div class="form-group row">
 										<label class="col-sm-2 col-form-label">Profile photo :</label>
 										<div class="col-sm-7">
-											<input class="form-control" name="photo" type="file" value="">
+											<input class="form-control" name="photo" type="file">
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<div class="row">
 									<div class="col-sm-2">
@@ -228,3 +229,5 @@
 		</div>
 	</main>
 	<div class="ttr-overlay"></div>
+
+<?php require_once('footer.php');?>
