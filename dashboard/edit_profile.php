@@ -110,7 +110,7 @@
 			<div class="db-breadcrumb">
 				<h4 class="breadcrumb-title">Update Profile</h4>
 				<ul class="db-breadcrumb-list">
-					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="index.php"><i class="fa fa-home"></i>Home</a></li>
 					<li>Update Profile</li>
 				</ul>
 			</div>	
