@@ -16,6 +16,7 @@
 	$address = $result[0]['address'];
 	$birthday = $result[0]['birthday'];
 	$gender = $result[0]['gender'];
+	$photo = $result[0]['photo'];
 
 	// user profile update
 	if(isset($_POST['updateProfile'])){
@@ -27,8 +28,7 @@
         $up_address = $_POST['up_address'];
         $up_birthday = $_POST['up_birthday'];
         $up_gender = $_POST['up_gender'];
-        // $photo = $_FILES['photo'];
-        // $photo_name = $_FILES['photo']['name'];
+        $photo_name = $_FILES['photo']['name'];
 
 		if(empty($up_name)){
             $error = 'Name is Required!';
@@ -64,28 +64,28 @@
 			$error = 'Gender is Required!';
 		}
 
-		// else{
+		else{
 
-		// 	if(!empty($photo)){
-		// 		$target_dir = "assets/images/students/";
-		// 		$target_file = $target_dir . basename($_FILES["photo"]["name"]);
-		// 		$extenstion = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			if(!empty($photo_name)){
+				$target_dir = "assets/images/students/";
+				$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+				$extenstion = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-		// 		if($extenstion != 'png' AND $extenstion != 'jpg'){
-		// 			$error = 'Photo must be png and jpg!';
-		// 		}
-		// 		else{
-		// 			$temp_name = $_FILES['photo']['tmp_name'];
-		// 			$final_path = $target_dir . "user_id_".$user_id."_.".$extenstion;
-		// 			move_uploaded_file($temp_name, $target_file);
-		// 		}
-		// 	}
-		// 	else{
-		// 		$final_path = Student("photo",$user_id);
-		// 	}
-		// }
-
-		$update = $pdo->prepare("UPDATE students SET name=?, email=?, mobile=?, father_name=?, mother_name=?, address=?, birthday=?, gender=? WHERE id=?");
+				if($extenstion != 'png' && $extenstion != 'jpg' && $extenstion != 'jpeg'){
+					$error = 'Photo is must be png or jpg!';
+				}
+				else{
+					$temp_name = $_FILES["photo"]["tmp_name"];
+					$final_path = $target_dir . "user_id_". $user_id.".".$extenstion;
+					move_uploaded_file($temp_name, $final_path);
+				}
+			}
+			else{
+				$final_path = Student("photo",$user_id);
+			}
+		}
+		// update data
+		$update = $pdo->prepare("UPDATE students SET name=?, email=?, mobile=?, father_name=?, mother_name=?, address=?, birthday=?, gender=?, photo=? WHERE id=?");
 		$update->execute(array(
 			$up_name,
 			$up_email,
@@ -95,6 +95,7 @@
 			$up_address,
 			$up_birthday,
 			$up_gender,
+			$final_path,
 			$user_id
 		));
 
@@ -122,7 +123,7 @@
 							<h4>Update Profile</h4>
 						</div>
 						<div class="widget-inner">
-							<form class="edit-profile" action="" method="POST" enctype="multipart/form-date">
+							<form class="edit-profile" action="" method="POST" enctype="multipart/form-data">
 								<div class="">
 									<!-- <div class="form-group row">
 										<div class="col-sm-10 ml-auto">
@@ -204,12 +205,18 @@
 											name="up_gender" value="Female" type="radio"> Female</label>
 										</div>
 									</div>
-									<!-- <div class="form-group row">
+									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Profile photo :</label>
 										<div class="col-sm-7">
-											<input class="form-control" name="photo" type="file">
+											<?php if($photo != null):?>
+												<div class="profile_photo">
+													<a target="_blank" href="<?php echo $photo;?>"> <img style="height:100px;width:auto;" src="<?php echo $photo;?>"></a>
+												</div>
+											<?php endif;?>
+											<mark><small>If won't change photo, skip the input field.</small></mark>
+											<input type="file" class="form-control" name="photo">
 										</div>
-									</div> -->
+									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-2">
