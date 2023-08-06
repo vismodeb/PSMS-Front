@@ -120,16 +120,16 @@
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
-									<label>Your Email or Mobile</label>
-									<input name="st_emailMobil" type="text" class="form-control">
+									<!-- <label>Your Email or Mobile</label> -->
+									<input name="st_emailMobil" type="text" placeholder="Your Email or Mobile" class="form-control">
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group"> 
-									<label>Your Password</label>
-									<input name="st_password" type="password" class="form-control">
+									<!-- <label>Your Password</label> -->
+									<input name="st_password" type="password" placeholder="Your Password" class="form-control">
 								</div>
 							</div>
 						</div>
