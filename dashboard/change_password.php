@@ -1,6 +1,4 @@
-<?php
-
-    require_once('header.php');
+<?php require_once('header.php');
 
     if(isset($_POST['chang_pass'])){
         $current_pass = $_POST['current_pass'];
@@ -82,11 +80,6 @@
                                 </div>
 
 								<div class="">
-									<!-- <div class="form-group row">
-										<div class="col-sm-10 ml-auto">
-											<h3>1. Password</h3>
-										</div>
-									</div> -->
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label" for="current_pass">Current Password</label>
 										<div class="col-sm-7">

@@ -1,5 +1,4 @@
 
-
 	<!-- Footer ==== -->
     <footer>
         <div class="footer-top">
@@ -126,5 +125,4 @@
 <script src="assets/js/contact.js"></script>
 <script src='assets/vendors/switcher/switcher.js'></script>
 </body>
-
 </html>

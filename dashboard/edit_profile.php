@@ -125,11 +125,6 @@
 						<div class="widget-inner">
 							<form class="edit-profile" action="" method="POST" enctype="multipart/form-data">
 								<div class="">
-									<!-- <div class="form-group row">
-										<div class="col-sm-10 ml-auto">
-											<h3>4. Password</h3>
-										</div>
-									</div> -->
 									<div class="form-group row">
                                         <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-7">
@@ -148,48 +143,56 @@
                                     
                                         </div>
                                     </div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Name :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_name" type="text" value="<?php echo $name; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Email :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_email" type="text" value="<?php echo $email; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Mobile Number :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_mobile" type="text" value="<?php echo $mobile; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Father Name :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_father_name" type="text" value="<?php echo $father_name; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Mother Name :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_mother_name" type="text" value="<?php echo $mother_name; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Address :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_address" type="text" value="<?php echo $address; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Birthday :</label>
 										<div class="col-sm-7">
 											<input class="form-control" name="up_birthday" type="date" value="<?php echo $birthday; ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Gender :</label>
 										<div class="col-sm-7">
@@ -205,6 +208,7 @@
 											name="up_gender" value="Female" type="radio"> Female</label>
 										</div>
 									</div>
+
 									<div class="form-group row">
 										<label class="col-sm-2 col-form-label">Profile photo :</label>
 										<div class="col-sm-7">
@@ -218,6 +222,7 @@
 										</div>
 									</div>
 								</div>
+								
 								<div class="row">
 									<div class="col-sm-2">
 									</div>

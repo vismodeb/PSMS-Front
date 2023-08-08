@@ -1,6 +1,5 @@
-<?php
+<?php require_once('../confige.php');
 
-    require_once('../confige.php');
     session_start();
 
     if(!isset($_SESSION['st_loggedin'])){

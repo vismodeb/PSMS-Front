@@ -180,6 +180,7 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
@@ -188,6 +189,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
@@ -196,6 +198,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
@@ -204,6 +207,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
@@ -212,6 +216,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
@@ -220,12 +225,14 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label>Birthday</label><br>
 									<input type="date" name="st_birthday" class="form-control">
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label>Gender:</label><br>
@@ -233,6 +240,7 @@
 									<label><input name="st_gender" value="Female" type="radio"> Female</label>
 								</div>
 							</div>
+
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group"> 
@@ -241,6 +249,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div class="col-lg-12 m-b30">
 								<button name="st_regSubmit" type="submit" value="Submit" class="btn button-md">Registration</button>
 							</div>

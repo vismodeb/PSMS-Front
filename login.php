@@ -42,7 +42,6 @@
 		header('location:dashboard/index.php');
 	}
 
-
 ?>
 
 <!DOCTYPE html>
@@ -125,6 +124,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group"> 
@@ -133,6 +133,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col-lg-12">
 							<div class="form-group form-forget">
 								<div class="custom-control custom-checkbox">
@@ -142,6 +143,7 @@
 								<a href="forget-password.php" class="ml-auto">Forgot Password?</a>
 							</div>
 						</div>
+
 						<div class="col-lg-12 m-b30">
 							<button name="st_loginSubmit" type="submit" value="Submit" class="btn button-md">Login</button>
 						</div>
@@ -168,5 +170,4 @@
 <script src="assets/js/contact.js"></script>
 <script src='assets/vendors/switcher/switcher.js'></script>
 </body>
-
 </html>
